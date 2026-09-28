@@ -1,44 +1,525 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Maliha Zainab - Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maliha Zainab | Personal Profile</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f5fb;
+            color: #26344d;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #202b42;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        nav .logo span {
+            color: #c69bea;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #c69bea;
+        }
+
+
+        /* HERO */
+
+        .hero {
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 70px;
+            padding: 70px 8%;
+            background: linear-gradient(135deg, #eee6fa, #ffffff);
+        }
+
+        .profile-image {
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 7px solid #b98bdd;
+            box-shadow: 0 10px 30px rgba(80, 60, 100, 0.18);
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hello {
+            color: #8a5ca8;
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            color: #202b42;
+            margin: 8px 0;
+        }
+
+        .hero h2 {
+            font-size: 22px;
+            color: #76548f;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #4d5870;
+        }
+
+
+        /* GENERAL */
+
+        .container {
+            width: 88%;
+            max-width: 1100px;
+            margin: 55px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #202b42;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+
+        /* ABOUT */
+
+        .about-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+            border-left: 6px solid #b98bdd;
+        }
+
+        .about-card p {
+            font-size: 17px;
+            color: #4d5870;
+        }
+
+
+        /* EDUCATION */
+
+        .education {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .education-card {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-card .icon {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .education-card h3 {
+            color: #202b42;
+            margin-bottom: 8px;
+        }
+
+        .education-card p {
+            color: #666;
+        }
+
+
+        /* SKILLS */
+
+        .skills-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill {
+            background: white;
+            padding: 13px 23px;
+            border-radius: 30px;
+            border: 1px solid #dec8ee;
+            color: #65477b;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-4px);
+            background: #eee2f8;
+        }
+
+
+        /* CONTACT */
+
+        .contact-card {
+            background: #202b42;
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .contact-card h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        .contact-item a {
+            color: #d7b7ed;
+            text-decoration: none;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            background: #171f31;
+            color: #cfd4df;
+            text-align: center;
+            padding: 22px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 13px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .education {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-    <h1>Maliha Zainab</h1>
-    <h2>BSIT Student</h2>
 
-    <hr>
+<!-- NAVIGATION -->
 
-    <h2>About Me</h2>
-    <p>
-        I am a BSIT student interested in Information Technology,
-        Artificial Intelligence and Digital Marketing.
-        I am hardworking, creative and always willing to learn new skills.
-    </p>
+<nav>
 
-    <h2>Education</h2>
-    <p>
-        Bachelor of Science in Information Technology (BSIT)
-    </p>
+    <div class="logo">
+        Maliha <span>Zainab</span>
+    </div>
 
-    <h2>Skills</h2>
     <ul>
-        <li>HTML and Web Technology</li>
-        <li>Artificial Intelligence</li>
-        <li>Digital Marketing</li>
-        <li>Canva</li>
-        <li>Google Ads</li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
     </ul>
 
-    <h2>Projects</h2>
-    <p>
-        AI Learning Coach
-    </p>
+</nav>
 
-    <h2>Contact</h2>
-    <p>Email: malihazainab01@gmail.com</p>
+
+<!-- HERO / PROFILE -->
+
+<section class="hero" id="home">
+
+    <img src="profile.jpg"
+         alt="Maliha Zainab"
+         class="profile-image">
+
+    <div class="hero-text">
+
+        <div class="hello">
+            HELLO, I'M
+        </div>
+
+        <h1>Maliha Zainab</h1>
+
+        <h2>BSIT Student</h2>
+
+        <p>
+            A creative and motivated learner interested in
+            technology, Artificial Intelligence and Digital Marketing.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ABOUT ME -->
+
+<section class="container" id="about">
+
+    <div class="section-title">
+        <h2>About Me</h2>
+        <p>A little introduction about me</p>
+    </div>
+
+    <div class="about-card">
+
+        <p>
+            Hello! I’m Maliha Zainab, a BSIT student at the
+            University of Education, Multan. I’m interested in
+            Artificial Intelligence, Digital Marketing, and technology.
+            I enjoy learning new AI tools, exploring creative ideas,
+            and developing practical digital skills. I’m a hardworking
+            and creative learner who is always interested in improving
+            and gaining practical experience.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- EDUCATION -->
+
+<section class="container" id="education">
+
+    <div class="section-title">
+
+        <h2>Education</h2>
+
+        <p>My educational background</p>
+
+    </div>
+
+
+    <div class="education">
+
+
+        <div class="education-card">
+
+            <div class="icon">🎓</div>
+
+            <h3>B.SIT</h3>
+
+            <p>
+                University of Education, Multan
+            </p>
+
+            <p>
+                2024 – 2028
+            </p>
+
+        </div>
+
+
+        <div class="education-card">
+
+            <div class="icon">📚</div>
+
+            <h3>Intermediate</h3>
+
+            <p>
+                Government Graduate College Women,
+                Tunsa (Dera Ghazi Khan)
+            </p>
+
+        </div>
+
+
+        <div class="education-card">
+
+            <div class="icon">🏫</div>
+
+            <h3>Matriculation</h3>
+
+            <p>
+                Friends Public Girls High School,
+                Tunsa (Dera Ghazi Khan)
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- SKILLS -->
+
+<section class="container" id="skills">
+
+    <div class="section-title">
+
+        <h2>My Skills</h2>
+
+        <p>Things I have been learning and exploring</p>
+
+    </div>
+
+
+    <div class="skills-box">
+
+        <div class="skill">Digital Marketing</div>
+
+        <div class="skill">SEO</div>
+
+        <div class="skill">Google Ads</div>
+
+        <div class="skill">Shopify</div>
+
+        <div class="skill">Canva</div>
+
+        <div class="skill">AI Tools</div>
+
+        <div class="skill">GoHighLevel</div>
+
+        <div class="skill">Python</div>
+
+        <div class="skill">C++</div>
+
+    </div>
+
+</section>
+
+
+
+<!-- CONTACT -->
+
+<section class="container" id="contact">
+
+    <div class="section-title">
+
+        <h2>Contact Me</h2>
+
+        <p>Feel free to connect with me</p>
+
+    </div>
+
+
+    <div class="contact-card">
+
+        <h2>Let's Connect</h2>
+
+        <div class="contact-item">
+            📍 Multan, Pakistan
+        </div>
+
+        <div class="contact-item">
+            📧
+            <a href="mailto:maliazainab01@gmail.com">
+                maliazainab01@gmail.com
+            </a>
+        </div>
+
+        <div class="contact-item">
+            💻
+            <a href="https://github.com/malihazainab01"
+               target="_blank">
+                github.com/malihazainab01
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 Maliha Zainab | Personal Profile
+
+</footer>
+
 
 </body>
+
 </html>
